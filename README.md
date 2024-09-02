@@ -1,6 +1,6 @@
-<p align="center"><img src="https://massgrave.dev/img/logo_small.png" alt="MAS Logo"></p>
+<p align="center"><img src="https://cdn.shopify.com/s/files/1/0627/5321/0519/files/Logo_200x60_ddee3ebb-2446-435c-a23a-238e17a9cfc9.png" alt="JK Logo"></p>
 
-<h1 align="center">Microsoft  Activation  Scripts (MAS)</h1>
+<h1 align="center">Microsoft  Activation  Scripts </h1>
 
 <p align="center">Um ativador do Windows e do Office que usa métodos de ativação HWID / Ohook / KMS38 / KMS online, com foco em código-fonte aberto e menos detecções de antivírus.</p>
 
@@ -53,9 +53,9 @@ Latest Version: 2.6
 Release date: 20-Apr-2024
 ```
 
-### [Troubleshooting / Help](https://massgrave.dev/troubleshoot)
-### [Download Original Windows & Office](https://massgrave.dev/genuine-installation-media)
-### Homepage - [https://massgrave.dev/](https://massgrave.dev/)
+### [Troubleshooting / Help](https://jkinformatica.shop/)
+### [Download Original Windows & Office](https://jkinformatica.shop/)
+### Homepage - [https://massgrave.dev/](https://jkinformatica.shop/)
 
 ---
 
