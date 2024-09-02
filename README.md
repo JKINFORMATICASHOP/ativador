@@ -55,7 +55,7 @@ Release date: 20-Apr-2024
 
 ### [Troubleshooting / Help](https://jkinformatica.shop/)
 ### [Download Original Windows & Office](https://jkinformatica.shop/)
-### Homepage - [https://massgrave.dev/](https://jkinformatica.shop/)
+### Homepage - [JKINFORMATICA.SHOP/](https://jkinformatica.shop/)
 
 ---
 
