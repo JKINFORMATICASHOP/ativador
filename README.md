@@ -2,7 +2,7 @@
 
 <h1 align="center">Microsoft  Activation  Scripts (MAS)</h1>
 
-<p align="center">A Windows and Office activator using HWID / Ohook / KMS38 / Online KMS activation methods, with a focus on open-source code and fewer antivirus detections.</p>
+<p align="center">Um ativador do Windows e do Office que usa métodos de ativação HWID / Ohook / KMS38 / KMS online, com foco em código-fonte aberto e menos detecções de antivírus.</p>
 
 <p align="center">
     <a href="https://jkinformatica.shop/"><img src="https://img.shields.io/badge/Chat%20with%20us%20on%20Discord--blue?style=social&logo=discord" alt="Chat with us without signup" title="LICENÇAS ORIGINAIS"></a>
