@@ -5,13 +5,13 @@
 
 
 
-::  For command line switches, check jkinformatica[.]shop/command_line_switches.html
+::  For command line switches, check mass grave [.] dev/command_line_switches.html
 ::  If you want to better understand script, read from MAS separate files version. 
 
 
 ::============================================================================
 ::
-::   Homepage: jkinformatica[.]shop
+::   Homepage: mass grave [.] dev
 ::      Email: windowsaddict@protonmail.com
 ::
 ::============================================================================
@@ -57,7 +57,7 @@ exit /b
 ::========================================================================================================================================
 
 set "blank="
-set "mas=ht%blank%tps%blank%://jk%blank%informatica.shop/"
+set "mas=ht%blank%tps%blank%://mass%blank%grave.dev/"
 
 ::  Check if Null service is working, it's important for the batch script
 
@@ -67,7 +67,7 @@ echo:
 echo Null service is not running, script may crash...
 echo:
 echo:
-echo Help - %mas%collections/microsoft
+echo Help - %mas%troubleshoot.html
 echo:
 echo:
 ping 127.0.0.1 -n 10
@@ -262,7 +262,7 @@ setlocal EnableDelayedExpansion
 
 cls
 color 07
-title  Microsoft %blank% Office %blank% 2024 %masver%
+title  Microsoft %blank%Activation %blank%Scripts %masver%
 mode 76, 30
 
 echo:
@@ -271,31 +271,34 @@ echo:
 echo:
 echo:       ______________________________________________________________
 echo:
-echo:             ATIVE O PACOTE OFFICE:
+echo:                 Activation Methods:
 echo:
-echo:             
-echo:             [1] Ativar      ^|  Office      ^|   Permanente
-echo:                        
+echo:             [1] HWID        ^|  Windows           ^|   Permanent
+echo:             [2] Ohook       ^|  Office            ^|   Permanent
+echo:             [3] KMS38       ^|  Windows           ^|   Year 2038
+echo:             [4] Online KMS  ^|  Windows / Office  ^|    180 Days
 echo:             __________________________________________________      
-echo:                   
-echo:             [2] Install Office
-echo:             [3] Suporte
+echo:
+echo:             [5] Activation Status
+echo:             [6] Troubleshoot
+echo:             [7] Extras
+echo:             [8] Help
 echo:             [0] Exit
 echo:       ______________________________________________________________
 echo:
-call :_color2 %_White% "          " %_Green% "Enter a menu option in the Keyboard [1,2,3,0] :"
-echo:
-echo:
-call :_color2 %_White% "          " %_Green% "WWW.JKINFORMATICA.SHOP"
-call :_color2 %_White% "          " %_Blue% "WWW.MICROSOFT.COM"
-echo:
+call :_color2 %_White% "          " %_Green% "Enter a menu option in the Keyboard [1,2,3,4,5,6,7,8,0] :"
 choice /C:123456780 /N
 set _erl=%errorlevel%
 
 if %_erl%==9 exit /b
-if %_erl%==3 start %mas%collections/microsoft & goto :MainMenu
-if %_erl%==2 goto:Extras
-if %_erl%==1 setlocal & call :OhookActivation   & cls & endlocal & goto :MainMenu
+if %_erl%==8 start %mas%troubleshoot.html & goto :MainMenu
+if %_erl%==7 goto:Extras
+if %_erl%==6 setlocal & call :troubleshoot      & cls & endlocal & goto :MainMenu
+if %_erl%==5 setlocal & call :_Check_Status_wmi & cls & endlocal & goto :MainMenu
+if %_erl%==4 setlocal & call :KMSActivation     & cls & endlocal & goto :MainMenu
+if %_erl%==3 setlocal & call :KMS38Activation   & cls & endlocal & goto :MainMenu
+if %_erl%==2 setlocal & call :OhookActivation   & cls & endlocal & goto :MainMenu
+if %_erl%==1 setlocal & call :HWIDActivation    & cls & endlocal & goto :MainMenu
 goto :MainMenu
 
 ::========================================================================================================================================
@@ -303,35 +306,36 @@ goto :MainMenu
 :Extras
 
 cls
-title  INSTALL
+title  Extras
 mode 76, 30
 echo:
 echo:
 echo:
-echo:             BAIXE E INSTALE O OFFICE
+echo:
 echo:
 echo:       ______________________________________________________________
 echo:
-echo:             [1] Download / Office
+echo:             [1] Change Windows Edition
+echo:
+echo:             [2] Extract $OEM$ Folder
+echo:
+echo:             [3] Activation Status [vbs]
+echo:
+echo:             [4] Download Genuine Windows / Office
 echo:             __________________________________________________      
 echo:                                                                     
-echo:             [0] Voltar para Ativador
+echo:             [0] Go to Main Menu
 echo:       ______________________________________________________________
 echo:
-call :_color2 %_White% "           " %_Green% "Enter a menu option in the Keyboard [1,0] :"
-echo:
-echo:
-echo:
-
-echo:
-call :_color2 %_White% "          " %_Green% "  WWW.JKINFORMATICA.SHOP"
-call :_color2 %_White% "          " %_Blue% "  WWW.MICROSOFT.COM"
-echo:
+call :_color2 %_White% "           " %_Green% "Enter a menu option in the Keyboard [1,2,3,4,0] :"
 choice /C:12340 /N
 set _erl=%errorlevel%
 
 if %_erl%==5 goto :MainMenu
-if %_erl%==1 start %mas%genuine-installation-media.html & goto :Extras
+if %_erl%==4 start %mas%genuine-installation-media.html & goto :Extras
+if %_erl%==3 setlocal & call :_Check_Status_vbs & cls & endlocal & goto :Extras
+if %_erl%==2 goto:Extract$OEM$
+if %_erl%==1 setlocal & call :change_edition    & cls & endlocal & goto :Extras
 goto :Extras
 
 ::========================================================================================================================================
@@ -578,7 +582,7 @@ echo:
 echo PowerShell is not working. Aborting...
 echo If you have applied restrictions on Powershell then undo those changes.
 echo:
-echo Check this page for help. %mas%collections/microsoft
+echo Check this page for help. %mas%troubleshoot
 goto dk_done
 )
 
@@ -828,7 +832,7 @@ call :dk_color %Red% "Changing Windows Region To USA          [Failed]"
 
 if not exist %SystemRoot%\system32\ClipUp.exe (
 call :dk_color %Red% "Checking ClipUp.exe File                [Not found, aborting the process]"
-call :dk_color2 %Blue% "Check this page for help" %_Yellow% " %mas%collections/microsoft"
+call :dk_color2 %Blue% "Check this page for help" %_Yellow% " %mas%troubleshoot"
 goto :dl_final
 )
 
@@ -940,7 +944,7 @@ if defined resfail (
 set error=1
 echo:
 call :dk_color %Red% "Checking Licensing Servers              [Failed To Connect]"
-call :dk_color2 %Blue% "Check this page for help" %_Yellow% " %mas%collections/microsoft"
+call :dk_color2 %Blue% "Check this page for help" %_Yellow% " %mas%licensing-servers-issue"
 )
 )
 
@@ -973,7 +977,7 @@ echo "%error_code%" | findstr /i "0x80072e 0x80072f 0x800704cf" %nul% && (
 set error=1
 echo:
 call :dk_color %Red% "Checking Internet Issues                [Found] %error_code%"
-call :dk_color2 %Blue% "Check this page for help" %_Yellow% " %mas%collections/microsoft"
+call :dk_color2 %Blue% "Check this page for help" %_Yellow% " %mas%licensing-servers-issue"
 )
 )
 
@@ -989,7 +993,7 @@ call :dk_color %Blue% "At the time of writing this, HWID Activation was not supp
 call :dk_color %Blue% "Use KMS38 Activation option."
 ) else (
 if not defined error call :dk_color %Blue% "%_fixmsg%"
-call :dk_color2 %Blue% "Check this page for help" %_Yellow% " %mas%collections/microsoft"
+call :dk_color2 %Blue% "Check this page for help" %_Yellow% " %mas%troubleshoot"
 )
 )
 
@@ -1773,27 +1777,22 @@ echo:
 echo:
 echo         ____________________________________________________________
 echo:
-echo                 [1] Atualizar/Ativar Office
+echo                 [1] Install Ohook Office Activation
 echo:
-echo:               
+echo                 [2] Uninstall Ohook
 echo                 ____________________________________________
 echo:
-echo                 [2] Baixar e Instalar Office
+echo                 [3] Download Office
 echo:
 echo                 [0] %_exitmsg%
 echo         ____________________________________________________________
 echo: 
-call :dk_color2 %_White% "              " %_Green% "Digite... [1,2,0]"
-echo:
-echo:
-echo:
-call :_color2 %_White% "          " %_Green% "WWW.JKINFORMATICA.SHOP"
-call :_color2 %_White% "          " %_Blue% "WWW.MICROSOFT.COM"
-echo:
+call :dk_color2 %_White% "              " %_Green% "Enter a menu option in the Keyboard [1,2,3,0]"
 choice /C:1230 /N
 set _el=!errorlevel!
 if !_el!==4  exit /b
-if !_el!==2  start %mas%genuine-installation-media.html &goto :oh_menu
+if !_el!==3  start %mas%genuine-installation-media.html &goto :oh_menu
+if !_el!==2  goto :oh_uninstall
 if !_el!==1  goto :oh_menu2
 goto :oh_menu
 )
@@ -7205,7 +7204,7 @@ echo ___________________________________________________________________________
 echo:
 echo   Online KMS Activation Script is a part of 'Microsoft_Activation_Scripts' [MAS] project.
 echo:   
-echo   Homepage: jkinformatica[.]shop
+echo   Homepage: mass grave[.]dev
 echo      Email: windowsaddict@protonmail.com
 )>"%_dest%\Info.txt"
 exit /b
@@ -7353,7 +7352,7 @@ exit /b
 ::
 ::   This script is a part of 'Microsoft_Activation_Scripts' (MAS) project.
 ::
-::   Homepage: jkinformatica[.]shop
+::   Homepage: mass grave[.]dev
 ::      Email: windowsaddict@protonmail.com
 ::
 ::============================================================================
@@ -8811,7 +8810,7 @@ if %_erl%==5 goto:retokens
 if %_erl%==4 goto:fixwmi
 if %_erl%==3 goto:sfcscan
 if %_erl%==2 goto:dism_rest
-if %_erl%==1 start %mas%collections/microsoft &goto at_menu
+if %_erl%==1 start %mas%troubleshoot.html &goto at_menu
 goto :at_menu
 
 ::========================================================================================================================================
