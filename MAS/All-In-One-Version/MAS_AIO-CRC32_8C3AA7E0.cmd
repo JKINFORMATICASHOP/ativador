@@ -10199,7 +10199,7 @@ echo DISM /online /Set-Edition:%targetedition% /ProductKey:%key% /AcceptEula
 DISM /online /Set-Edition:%targetedition% /ProductKey:%key% /AcceptEula
 
 call :dk_color %Blue% "You must restart the system at this stage."
-echo Help: %mas%troubleshoot
+echo Help: %mas%
 
 ::========================================================================================================================================
 
