@@ -225,7 +225,7 @@ echo:
 call :_color %_Green% "Enter a menu option in the Keyboard [1,0] :"
 choice /C:10 /N
 if !errorlevel!==2 rem
-if !errorlevel!==1 (start ht%-%tps://github.com/mass%-%gravel/Microsoft-Acti%-%vation-Scripts & start %mas% & exit /b)
+if !errorlevel!==1 (start https://github.com/JKINFORMATICASHOP/ativador & start %mas% & exit /b)
 )
 )
 cls
