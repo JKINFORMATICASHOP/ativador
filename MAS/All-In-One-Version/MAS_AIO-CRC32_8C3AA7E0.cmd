@@ -203,32 +203,7 @@ exit /b
 
 ::========================================================================================================================================
 
-::  Check for updates
 
-set -=
-set old=
-
-for /f "delims=[] tokens=2" %%# in ('ping -4 -n 1 updatecheck.mass%-%grave.dev') do (
-if not [%%#]==[] (echo "%%#" | find "127.69" %nul1% && (echo "%%#" | find "127.69.%masver%" %nul1% || set old=1))
-)
-
-if defined old (
-echo ________________________________________________
-%eline%
-echo You are running outdated version MAS %masver%
-echo ________________________________________________
-echo:
-if not defined _MASunattended (
-echo [1] Get Latest MAS
-echo [0] Continue Anyway
-echo:
-call :_color %_Green% "Enter a menu option in the Keyboard [1,0] :"
-choice /C:10 /N
-if !errorlevel!==2 rem
-if !errorlevel!==1 (start https://github.com/JKINFORMATICASHOP/ativador & start %mas% & exit /b)
-)
-)
-cls
 
 ::========================================================================================================================================
 
