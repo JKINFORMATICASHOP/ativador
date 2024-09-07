@@ -6772,7 +6772,7 @@ call :Clear-KMS-Cache
 
 if not [%Act_OK%]==[1] (
 echo.
-echo In case of any issues, check https://mass%-%grave.dev/troubleshoot
+echo In case of any issues, check 
 )
 
 if defined _unattended exit /b
@@ -6817,13 +6817,13 @@ echo Reason:   Probably restricted Internet [Office/College] is connected,
 echo           or Firewall is blocking the connection.
 echo.
 echo Solution: Either use another Internet connection or use offline KMS
-echo           https://github.com/abbodi1406/KMS_VL_ALL_AIO
+echo         
 ) else (
 echo Port 1688 connection test is passed.
 echo.
 echo Make sure system files are not blocked by your firewall.
 echo If the issue persists, try offline KMS
-echo https://github.com/abbodi1406/KMS_VL_ALL_AIO
+echo 
 )
 echo.
 )
@@ -10282,7 +10282,7 @@ exit /b
 
 ::========================================================================================================================================
 
-::  https://github.com/Gamers-Against-Weed/Set-WindowsCbsEdition
+::  
 
 :cbsxml:[
 param (
